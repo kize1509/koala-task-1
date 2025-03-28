@@ -55,7 +55,7 @@
 
 ## Data storing 
 
-- Each data object has an unexpected object payload. 
+- Each data object has an unpredictable object payload. 
 - So the best way to store the data is to use a NoSQL database on the server.
 
 ### Additional Points
