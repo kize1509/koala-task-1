@@ -39,13 +39,13 @@
 
 ### Batching Requests
 
-- Design a Memtable-like structure to act as a buffer for data before it is sent to the server.
+- Design a Memtable-like structure to act as a buffer for data before it is sent to the server. Basic queue or a priority queue (eg. prioritizing events by timestamp or event type) can act as a memtable.  
 
-- Upon receiving an event, perform a WAL operation to store the data in a file and then add the data to the buffer.
+- Upon receiving an event, perform a WAL operation to store the data in a file and then add the data to the buffer.  
 
-- When the buffer reaches a configured size, send the data to the server, then clear the buffer and delete the logs.
+- When the buffer reaches a configured size, send the data to the server, then clear the buffer and delete the logs.  
 
-- Data transmission should be handled in a separate thread to ensure the main thread remains unblocked and continues receiving events.
+- Data transmission should be handled in a separate thread to ensure the main thread remains unblocked and continues receiving events.  
 
 - WAL is our backup plan. If the data is not sent to the server, we can retrieve it from the WAL file.
 
